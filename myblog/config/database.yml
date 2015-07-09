@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: <%= ENV['C9_USER'] %>
+  password:
+  host: <%= ENV['IP'] %>
+
+development:
+  <<: *default
+  database: myblog
+
+test:
+  <<: *default
+  database: myblog_test
+
+production:
+  <<: *default
+  database: myblog_production
+  username: myblog
+  password: <%= ENV['MYBLOG_DATABASE_PASSWORD'] %>
