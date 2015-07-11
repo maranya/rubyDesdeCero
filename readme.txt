@@ -31,6 +31,21 @@ Lo anterior no crea la tabla en la BD, se tiene que enviar:
 
 - rails rake db:migrate
 
+Para generar tabla con relaciones:
+
+- rails g scaffold Post title:string content:string blog:references
+
+Comando para revisar los POST y GET
+
+- rake routes
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 Uso de Gems:
 
 - Devise: Te genera login, cambiar password, etc.
