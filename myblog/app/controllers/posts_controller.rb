@@ -1,10 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    @posts = @blog.posts #select * from posts where blog_id = x
+    respond_to do [format]
+      format.html { redirect_to blog_post_path(@blog) }
+    end
   end
 
   # GET /posts/1
@@ -65,6 +70,10 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+    
+    def set_blog
+      @post = Post.find(params[:blog_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
